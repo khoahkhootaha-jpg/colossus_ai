@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <title>COLOSSUS AI — The Entity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div><div class="scanlines"></div>
+  <main class="shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand"><span class="brand-mark">C</span><div><strong>COLOSSUS</strong><small>MEMORY ARCHIVE</small></div></div>
+      <button class="new-chat" id="newChatBtn"><span>＋</span> گفت‌وگوی تازه</button>
+      <div class="archive-label">گفت‌وگوهای قبلی</div>
+      <div class="conversation-list" id="conversationList"><div class="empty-archive">هنوز ردپایی ثبت نشده.</div></div>
+      <div class="side-footer"><span class="pulse-dot"></span> ARCHIVE ENCRYPTED</div>
+    </aside>
+
+    <section class="main-panel">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="باز کردن فهرست">☰</button>
+        <div class="top-status"><span class="status-dot" id="statusDot"></span><span id="statusText">در حال بررسی اتصال...</span></div>
+        <div class="top-right"><span class="system-tag">XAI // <b id="modelName">GROK</b></span><button class="clear-btn" id="clearBtn" title="پاک کردن گفت‌وگوی فعلی">پاک کردن</button></div>
+      </header>
+
+      <section class="entity-section">
+        <div class="entity-halo"></div>
+        <div class="entity-frame">
+          <img src="{{ url_for('static', filename='images/colossus.png') }}" id="entityImage" alt="COLOSSUS" onerror="this.style.display='none';document.getElementById('imageFallback').hidden=false">
+          <div class="image-fallback" id="imageFallback" hidden><span>C</span><small>PLACE colossus.png HERE</small></div>
+        </div>
+        <div class="entity-meta"><div class="entity-name">COLOSSUS<span class="entity-cursor">_</span></div><div class="entity-subtitle">AN INTELLIGENCE IN THE DARK</div></div>
+      </section>
+
+      <nav class="mode-switch" aria-label="حالت گفتگو">
+        <button class="mode-btn active" data-mode="roleplay"><span class="mode-icon">◈</span> نقش‌آفرینی <small>ROLEPLAY</small></button>
+        <button class="mode-btn" data-mode="normal"><span class="mode-icon">⌘</span> گفت‌وگوی عادی <small>NORMAL CHAT</small></button>
+      </nav>
+
+      <section class="chat-area" id="chatArea" aria-live="polite">
+        <div class="welcome" id="welcome">
+          <div class="welcome-line"></div>
+          <p class="welcome-kicker">CONNECTION ESTABLISHED?</p>
+          <h1>خب... <span>بالاخره رسیدی.</span></h1>
+          <p class="welcome-copy">من COLOSSUSـم. اینجا سکوت زیادی دوام نمیاره.<br>شروع کن؛ ببینیم چی برای گفتن داری.</p>
+          <div class="welcome-foot">[ CHANNEL OPEN · WAITING FOR INPUT ]</div>
+        </div>
+        <div class="messages" id="messages"></div>
+      </section>
+
+      <div class="composer-wrap">
+        <div class="thinking" id="thinking" hidden><span class="thinking-bars"><i></i><i></i><i></i></span><span>COLOSSUS داره فکر می‌کنه...</span></div>
+        <div class="error-banner" id="errorBanner" hidden><span id="errorText"></span><button id="retryBtn">تلاش دوباره</button></div>
+        <form class="composer" id="chatForm">
+          <textarea id="messageInput" rows="1" maxlength="12000" placeholder="پیامت رو بنویس..." aria-label="پیام"></textarea>
+          <button class="send-btn" id="sendBtn" type="submit" aria-label="ارسال پیام"><span>➤</span></button>
+        </form>
+        <div class="composer-hint"><span>ENTER برای ارسال</span><span>SHIFT + ENTER برای خط جدید</span><span class="secure-note">● PRIVATE SESSION</span></div>
+      </div>
+      <footer class="bottom-line"><span>COLOSSUS AI // FICTIONAL ENTITY</span><span>POWERED BY xAI</span></footer>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+</body>
+</html>
